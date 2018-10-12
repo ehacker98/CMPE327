@@ -5,7 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 import java.io.PrintWriter;
 
-public class FrontEnd extends planner{
+public class FrontEnd{
 
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
         PrintWriter writer = new PrintWriter("C:\\Users\\ehack\\Desktop\\TransactionOutputFIle.txt", "UTF-8");
