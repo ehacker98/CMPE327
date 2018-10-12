@@ -14,16 +14,14 @@ public class FrontEnd extends planner {
 		if (x == "login") {
 			x = scan.nextLine();
 			
-			if (x == "planner") {
-				planner planner = new planner();
+			while (x != "logout"){
+				if (x == "planner") {
+					planner planner = new planner();
+				}
+				else if (x == "agent") {
+					agent agent = new agent();
+				}
 			}
-			else if (x == "agent") {
-				agent agent = new agent();
-			}
-			
 		}
-		
-
 	}
-
 }
