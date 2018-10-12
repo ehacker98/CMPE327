@@ -5,9 +5,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 import java.io.PrintWriter;
 
-public class FrontEnd extends planner {
+public class FrontEnd extends planner{
 
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+        PrintWriter writer = new PrintWriter("C:\\Users\\ehack\\Desktop\\TransactionOutputFIle.txt", "UTF-8");
         Scanner scan = new Scanner(System.in);
         String x;
 
@@ -24,7 +25,7 @@ public class FrontEnd extends planner {
                      System.out.println("What would you like to do today?");
                      x = scan.nextLine();
                      if (x.equals("createservice")) {
-                         planner.createservice();
+                         writer.println(planner.createservice());
                      }
                  }
              }
@@ -39,7 +40,6 @@ public class FrontEnd extends planner {
                 }
             }
         }
-        PrintWriter writer = new PrintWriter("C:\\Users\\ehack\\Desktop\\TransactionOutputFIle.txt", "UTF-8");
         writer.println("EOS 00000 0 00000 **** 0");
         writer.close();
     }
