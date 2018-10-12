@@ -11,14 +11,14 @@ public class planner extends agent{
     String y;
     String z;
 
-    public void createservice(){
+    public String createservice(){
         System.out.println("What is the service number?");
         x = scan.nextLine();
         System.out.println("What is the service date?");
         y = scan.nextLine();
         System.out.println("What is the service name?");
         z = scan.nextLine();
-        writer.println("CAS " + x + " 0 " + " 00000 " + z + " " + y + "\n");
+        return ("CAS " + x + " 0 " + " 00000 " + z + " " + y + "\n");
     }
 
     public void deleteservice(){
