@@ -16,20 +16,32 @@ public class FrontEnd extends planner {
         x = scan.nextLine();
 
         if (x.equals("login")) {
-            System.out.println("What would you like to do today?");
+            System.out.println("Who are you?");
             x = scan.nextLine();
 
-            while (!x.equals("logout")){
-                if (x.equals("planner")) {
-                    planner planner = new planner();
-                }
-                else if (x.equals("agent")) {
-                    agent agent = new agent();
+             if (x.equals("planner")) {
+                 planner planner = new planner();
+                 while (!x.equals("logout")) {
+                     System.out.println("What would you like to do today?");
+                     x = scan.nextLine();
+                     if (x.equals("createservice")) {
+                         planner.createservice();
+                     }
+                 }
+             }
+            else if (x.equals("agent")) {
+                agent agent = new agent();
+                while (!x.equals("logout")) {
+                    System.out.println("What would you like to do today?");
+                    x = scan.nextLine();
+//                    if (x.equals("sellticket")) {
+//
+//                    }
                 }
             }
-            PrintWriter writer = new PrintWriter("C:\\Users\\ehack\\Desktop\\TransactionOutputFIle.txt", "UTF-8");
-            writer.println("EOS 00000 0 00000 **** 0");
-            writer.close();
         }
+        PrintWriter writer = new PrintWriter("C:\\Users\\ehack\\Desktop\\TransactionOutputFIle.txt", "UTF-8");
+        writer.println("EOS 00000 0 00000 **** 0");
+        writer.close();
     }
 }
