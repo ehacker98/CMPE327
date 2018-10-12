@@ -24,8 +24,14 @@ public class FrontEnd{
                  while (!x.equals("logout")) {
                      System.out.println("What would you like to do today?");
                      x = scan.nextLine();
-                     if (x.equals("createservice")) {
+                     if (x.equals("createservice")){
                          writer.println(planner.createservice());
+                     }
+                     if (x.equals("sellticket")){
+                         writer.println(planner.sellticket());
+                     }
+                     if (x.equals("cancelticket")){
+                         writer.println(planner.cancelticket());
                      }
                  }
              }
@@ -39,6 +45,9 @@ public class FrontEnd{
 //                    }
                 }
             }
+        }
+        else{
+            System.out.println("Incorrect input.");
         }
         writer.println("EOS 00000 0 00000 **** 0");
         writer.close();
