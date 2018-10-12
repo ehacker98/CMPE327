@@ -9,7 +9,6 @@ public class FrontEnd extends planner {
 
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
         Scanner scan = new Scanner(System.in);
-
         String x;
 
         System.out.println("Please login");
@@ -43,5 +42,8 @@ public class FrontEnd extends planner {
         PrintWriter writer = new PrintWriter("C:\\Users\\ehack\\Desktop\\TransactionOutputFIle.txt", "UTF-8");
         writer.println("EOS 00000 0 00000 **** 0");
         writer.close();
+    }
+
+    public FrontEnd() throws FileNotFoundException, UnsupportedEncodingException {
     }
 }
