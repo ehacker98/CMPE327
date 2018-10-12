@@ -9,6 +9,7 @@ public class planner{
     String x;
     String y;
     String z;
+    int cancelTicketCount = 0;
 
     public String createservice(){
         //Need to check validity of service number, date, name
@@ -37,7 +38,11 @@ public class planner{
         x = scan.nextLine();
         System.out.println("How many tickets would you like to cancel?");
         y = scan.nextLine();
-        return ("CAN " + x + " " + y + " 00000 " + " **** " + " 0 \n");
+        cancelTicketCount += Integer.parseInt(y);
+        if (cancelTicketCount <= 20)
+            return ("CAN " + x + " " + y + " 00000 " + " **** " + " 0 \n");
+        else
+            return ("");
     }
 
     public planner() throws FileNotFoundException, UnsupportedEncodingException {
