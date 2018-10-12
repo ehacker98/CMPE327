@@ -5,7 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 import java.io.PrintWriter;
 
-public class planner extends agent{
+public class planner{
     Scanner scan = new Scanner(System.in);
     String x;
     String y;
