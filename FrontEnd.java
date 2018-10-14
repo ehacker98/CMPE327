@@ -38,11 +38,14 @@ public class FrontEnd{
             else if (x.equals("agent")) {
                 agent agent = new agent();
                 while (!x.equals("logout")) {
-                    System.out.println("What would you like to do today?");
-                    x = scan.nextLine();
-//                    if (x.equals("sellticket")) {
-//
-//                    }
+                     System.out.println("What would you like to do today?");
+                     x = scan.nextLine();
+                     if (x.equals("sellticket")){
+                         writer.println(agent.sellticket());
+                     }
+                     if (x.equals("cancelticket")){
+                         writer.println(agent.cancelticket());
+                     }
                 }
             }
         }
