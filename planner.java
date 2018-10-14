@@ -3,13 +3,20 @@ package assignment2SourceCode;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class planner{
     Scanner scan = new Scanner(System.in);
     String x;
     String y;
     String z;
-    int cancelTicketCount = 0;
+
+    public class cancelledTickets {
+        int cancelTicketCount = 0;
+        int serviceNum;
+    }
+
+    ArrayList<cancelledTickets> cancelledTickets = new ArrayList();
 
     public String createservice(){
         //Need to check validity of service number, date, name
@@ -38,11 +45,24 @@ public class planner{
         x = scan.nextLine();
         System.out.println("How many tickets would you like to cancel?");
         y = scan.nextLine();
-        cancelTicketCount += Integer.parseInt(y);
-        if (cancelTicketCount <= 20)
-            return ("CAN " + x + " " + y + " 00000 " + " **** " + " 0 \n");
-        else
-            return ("");
+        return ("CAN " + x + " " + y + " 00000 " + " **** " + " 0 \n");
+    }
+
+    public String deleteservice(){
+        System.out.println("What type of service would you like to delete?");
+        x = scan.nextLine();
+        System.out.println("To delete your ticket, please enter the service number");
+        return ("DEL " + y + " " + x + " 00000 " + " **** " + " 0 \n");
+    }
+
+    public String changeticket(){
+        System.out.println("From which service would you like to change tickets?");
+        x = scan.nextLine();
+        System.out.println("How many tickets would you like?");
+        z = scan.nextLine();
+        System.out.println("Please enter your new service number.");
+        y = scan.nextLine();
+        return ("CHG " + x + " " + z + " " + y + " **** " + " 0 \n");
     }
 
     public planner() throws FileNotFoundException, UnsupportedEncodingException {
