@@ -1,70 +1,75 @@
 package assignment2SourceCode;
 
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.*;
 
-public class planner{
-    Scanner scan = new Scanner(System.in);
-    String x;
-    String y;
-    String z;
+public class FrontEnd{
 
-    public class cancelledTickets {
-        int cancelTicketCount = 0;
-        int serviceNum;
-    }
+    public static void main(String[] args) throws IOException {
+        PrintWriter writer = new PrintWriter("C:\\Users\\ehack\\Desktop\\TransactionOutputFIle.txt", "UTF-8");
+        Scanner scan = new Scanner(System.in);
+        String x;
 
-    ArrayList<cancelledTickets> cancelledTickets = new ArrayList();
+        ArrayList<Integer> validServices = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\ehack\\Desktop\\ValidServicesFile.txt"));
+        String st;
+        while (!(st = br.readLine()).equals("00000"))
+            validServices.add(Integer.parseInt(st));
 
-    public String createservice(){
-        //Need to check validity of service number, date, name
-        System.out.println("What is the service number?");
+        System.out.println("Please login");
         x = scan.nextLine();
-        System.out.println("What is the service date?");
-        y = scan.nextLine();
-        System.out.println("What is the service name?");
-        z = scan.nextLine();
-        return ("CAS " + x + " 0 " + " 00000 " + z + " " + y + "\n");
+
+        if (x.equals("login")) {
+            System.out.println("Who are you?");
+            x = scan.nextLine();
+
+            if (x.equals("planner")) {
+                planner planner = new planner();
+                while (!x.equals("logout")) {
+                    System.out.println("What would you like to do today?");
+                    x = scan.nextLine();
+                    if (x.equals("createservice")){
+                        writer.println(planner.createservice());
+                    }
+                    if (x.equals("sellticket")){
+                        writer.println(planner.sellticket());
+                    }
+                    if (x.equals("cancelticket")){
+                        writer.println(planner.cancelticket());
+                    }
+                    if (x.equals("deleteservice")) {
+                        writer.println(planner.deleteservice());
+                    }
+                    if (x.equals("changeticket")) {
+                        writer.println(planner.changeticket());
+                    }
+                }
+            }
+            else if (x.equals("agent")) {
+                agent agent = new agent();
+                while (!x.equals("logout")) {
+                    System.out.println("What would you like to do today?");
+                    x = scan.nextLine();
+                    if (x.equals("sellticket")){
+                        writer.println(agent.sellticket());
+                    }
+                    if (x.equals("cancelticket")){
+                        writer.println(agent.cancelticket());
+                    }
+                    if (x.equals("changeticket")){
+                        writer.println(agent.changeticket());
+                    }
+                }
+            }
+        }
+        else{
+            System.out.println("Incorrect input.");
+        }
+        writer.println("EOS 00000 0 00000 **** 0");
+        writer.close();
     }
 
-    public String sellticket(){
-        //Need to check for valid service number and number of tickets
-        System.out.println("For what service would you like to sell tickets?");
-        x = scan.nextLine();
-        System.out.println("How many tickets would you like to sell?");
-        y = scan.nextLine();
-        return ("SEL " + x + " " + y + " 00000 " + " **** " + " 0 \n");
-    }
-
-    public String cancelticket(){
-        //Need to check that no more than 20 tickets are being cancelled for specific service within this session
-        //Need to check tickets are being cancelled for a valid service
-        System.out.println("For what service would you like to cancel tickets?");
-        x = scan.nextLine();
-        System.out.println("How many tickets would you like to cancel?");
-        y = scan.nextLine();
-        return ("CAN " + x + " " + y + " 00000 " + " **** " + " 0 \n");
-    }
-
-    public String deleteservice(){
-        System.out.println("What type of service would you like to delete?");
-        x = scan.nextLine();
-        System.out.println("To delete your ticket, please enter the service number");
-        return ("DEL " + y + " " + x + " 00000 " + " **** " + " 0 \n");
-    }
-
-    public String changeticket(){
-        System.out.println("From which service would you like to change tickets?");
-        x = scan.nextLine();
-        System.out.println("How many tickets would you like?");
-        z = scan.nextLine();
-        System.out.println("Please enter your new service number.");
-        y = scan.nextLine();
-        return ("CHG " + x + " " + z + " " + y + " **** " + " 0 \n");
-    }
-
-    public planner() throws FileNotFoundException, UnsupportedEncodingException {
+    public FrontEnd() throws FileNotFoundException, UnsupportedEncodingException {
     }
 }
