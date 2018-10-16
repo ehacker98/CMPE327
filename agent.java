@@ -9,8 +9,6 @@ public class agent {
     String x;
     String y;
     String z;
-    //serviceCancels = [0] create array of 0s, length of array is number of services in valid services file
-
     public String sellticket(){ //if sellticket called, ask for service and number of tickets to sell, then push results to output file
         System.out.println("For what service would you like to sell tickets?");
         x = scan.nextLine();
